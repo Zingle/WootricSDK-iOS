@@ -96,6 +96,10 @@
 - (void)setPassiveThankYouLinkWithText:(NSString *)passiveThankYouLinkText URL:(NSURL *)passiveThankYouLinkURL;
 - (void)setPromoterThankYouLinkWithText:(NSString *)promoterThankYouLinkText URL:(NSURL *)promoterThankYouLinkURL;
 
+- (BOOL)negativeTypeScore:(int)score;
+- (BOOL)neutralTypeScore:(int)score;
+- (BOOL)positiveTypeScore:(int)score;
+
 - (NSString *)thankYouMessageDependingOnScore:(int)score;
 - (NSString *)thankYouLinkTextDependingOnScore:(int)score;
 - (NSURL *)thankYouLinkURLDependingOnScore:(int)score andText:(NSString *)text;

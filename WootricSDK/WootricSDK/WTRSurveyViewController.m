@@ -114,7 +114,7 @@
     [_feedbackView textViewResignFirstResponder];
     [self presentShareScreenOrDismissForScore:score];
   } else {
-    if (_settings.skipFeedbackScreen && score >= 9) {
+    if (_settings.skipFeedbackScreen && [_settings positiveTypeScore:score]) {
       [self presentShareScreenOrDismissForScore:score];
     } else {
       [self setQuestionViewVisible:NO andFeedbackViewVisible:YES];
@@ -223,8 +223,9 @@
 #pragma mark - Helper methods
 
 - (void)setupFacebookAndTwitterForScore:(int)score {
-  BOOL twitterAvailable = ([self twitterHandlerAndFeedbackTextPresent] && score >= 9);
-  BOOL facebookAvailable = ([_settings facebookPageSet] && score >= 9);
+  BOOL scoreIsPositive = [_settings positiveTypeScore:score];
+  BOOL twitterAvailable = ([self twitterHandlerAndFeedbackTextPresent] && scoreIsPositive);
+  BOOL facebookAvailable = ([_settings facebookPageSet] && scoreIsPositive);
   if (!twitterAvailable && !facebookAvailable) {
     _constraintModalHeight.constant = 230;
     _socialShareViewHeightConstraint.constant = 190;
@@ -237,9 +238,11 @@
 }
 
 - (BOOL)socialShareAvailableForScore:(int)score {
+  BOOL scoreIsPositive = [_settings positiveTypeScore:score];
+  
   return ([_settings thankYouLinkConfiguredForScore:score] ||
-          ([self twitterHandlerAndFeedbackTextPresent] && score >= 9) ||
-          ([_settings facebookPageSet] && score >= 9));
+          ([self twitterHandlerAndFeedbackTextPresent] && scoreIsPositive) ||
+          ([_settings facebookPageSet] && scoreIsPositive));
 }
 
 - (BOOL)twitterHandlerAndFeedbackTextPresent {

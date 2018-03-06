@@ -83,7 +83,7 @@
   [_feedbackView setFollowupLabelTextBasedOnScore:sender.assignedScore];
   [_feedbackView setFeedbackPlaceholderText:placeholderText];
   if (_feedbackView.hidden) {
-    if (_settings.skipFeedbackScreen && _currentScore >= 9) {
+    if (_settings.skipFeedbackScreen && [_settings positiveTypeScore:_currentScore]) {
       [self sendButtonPressed];
     } else {
       [self showFeedbackView];
@@ -214,8 +214,9 @@
 }
 
 - (void)setupFacebookAndTwitterForScore:(int)score {
-  BOOL twitterAvailable = ([self twitterHandlerAndFeedbackTextPresent] && score >= 9);
-  BOOL facebookAvailable = ([_settings facebookPageSet] && score >= 9);
+  BOOL scoreIsPositive = [_settings positiveTypeScore:score];
+  BOOL twitterAvailable = ([self twitterHandlerAndFeedbackTextPresent] && scoreIsPositive);
+  BOOL facebookAvailable = ([_settings facebookPageSet] && scoreIsPositive);
   if (![_settings thankYouLinkConfiguredForScore:score]) {
     [_socialShareView noThankYouButton];
   }
@@ -224,9 +225,11 @@
 }
 
 - (BOOL)socialShareAvailableForScore:(int)score {
+  BOOL scoreIsPositive = [_settings positiveTypeScore:score];
+  
   return ([_settings thankYouLinkConfiguredForScore:score] ||
-          ([self twitterHandlerAndFeedbackTextPresent] && score >= 9) ||
-          ([_settings facebookPageSet] && score >= 9));
+          ([self twitterHandlerAndFeedbackTextPresent] && scoreIsPositive) ||
+          ([_settings facebookPageSet] && scoreIsPositive));
 }
 
 - (BOOL)twitterHandlerAndFeedbackTextPresent {
