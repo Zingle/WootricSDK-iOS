@@ -129,7 +129,7 @@
 */
 + (void)forceSurvey:(BOOL)flag;
 /**
- @discussion With this option enabled, promoters (score 9-10) will be taken directly to third screen, skipping the second (feedback) one.
+ @discussion With this option enabled, promoters (e.g. 9-10 for NPS) will be taken directly to third screen, skipping the second (feedback) one.
  @param flag A boolean to set if the feedback screen should be skipped.
 */
 + (void)skipFeedbackScreenForPromoter:(BOOL)flag;
@@ -141,12 +141,12 @@
 + (void)passScoreAndTextToURL:(BOOL)flag;
 
 /**
- @discussion If configured, a third screen for promoters (score 9-10) will show a Facebook like (thumbs up) button and a share button
+ @discussion If configured, a third screen for promoters (e.g. 9-10 for NPS) will show a Facebook like (thumbs up) button and a share button
  @param facebookPage A NSURL to the Facebook page.
 */
 + (void)setFacebookPage:(NSURL *)facebookPage;
 /**
- @discussion If configured, a third screen for promoters (score 9-10) will show a Twitter share button
+ @discussion If configured, a third screen for promoters (e.g. 9-10 for NPS) will show a Twitter share button
  @param twitterHandler NSString with the Twitter handler.
 */
 + (void)setTwitterHandler:(NSString *)twitterHandler;
@@ -157,17 +157,17 @@
 */
 + (void)setThankYouMessage:(NSString *)thankYouMessage;
 /**
- @discussion If configured, a custom thank you message will display for detractors (score 0-6).
+ @discussion If configured, a custom thank you message will display for detractors (e.g. 0-6 for NPS).
  @param detractorThankYouMessage NSString of thank you message for detractors.
 */
 + (void)setDetractorThankYouMessage:(NSString *)detractorThankYouMessage;
 /**
- @discussion If configured, a custom thank you message will display for passive end users (score 7-8).
+ @discussion If configured, a custom thank you message will display for passive end users (e.g. 7-8 for NPS).
  @param passiveThankYouMessage NSString of thank you message for passive end users.
 */
 + (void)setPassiveThankYouMessage:(NSString *)passiveThankYouMessage;
 /**
- @discussion If configured, a custom thank you message will display for promoters (score 9-10).
+ @discussion If configured, a custom thank you message will display for promoters (e.g. 9-10 for NPS).
  @param promoterThankYouMessage NSString of thank you message for promoters.
 */
 + (void)setPromoterThankYouMessage:(NSString *)promoterThankYouMessage;
@@ -178,19 +178,19 @@
 */
 + (void)setThankYouLinkWithText:(NSString *)thankYouLinkText URL:(NSURL *)thankYouLinkURL;
 /**
- @discussion If configured, a custom thank you button will display detractors (score 0-6).
+ @discussion If configured, a custom thank you button will display detractors (e.g. 0-6 for NPS).
  @param detractorThankYouLinkText NSString with the detractor's link text.
  @param detractorThankYouLinkURL NSURL with the address to which the detractor end user will be redirected.
 */
 + (void)setDetractorThankYouLinkWithText:(NSString *)detractorThankYouLinkText URL:(NSURL *)detractorThankYouLinkURL;
 /**
- @discussion If configured, a custom thank you button will display passive end users (score 7-8).
+ @discussion If configured, a custom thank you button will display passive end users (e.g. 7-8 for NPS).
  @param passiveThankYouLinkText NSString with the passive end user's link text.
  @param passiveThankYouLinkURL NSURL with the address to which the passive end user will be redirected.
 */
 + (void)setPassiveThankYouLinkWithText:(NSString *)passiveThankYouLinkText URL:(NSURL *)passiveThankYouLinkURL;
 /**
- @discussion If configured, a custom thank you button will display promoters (score 9-10).
+ @discussion If configured, a custom thank you button will display promoters (e.g. 9-10 for NPS).
  @param promoterThankYouLinkText NSString with the promoter's link text.
  @param promoterThankYouLinkURL NSURL with the address to which the promoter end user will be redirected.
 */
@@ -198,16 +198,16 @@
 
 /**
  @discussion This method allows you to set custom placeholder text in feedback text view for each type of end user. Be advised that this setting takes precedence over values set in Wootric's from admin panel.
- @param promoterPlaceholder NSString placeholder for promoters (score 9-10).
- @param passivePlaceholder NSString placeholder for passives (score 7-8).
- @param detractorPlaceholder NSString placeholder for detractors (score 0-6).
+ @param promoterPlaceholder NSString placeholder for promoters (e.g. 9-10 for NPS).
+ @param passivePlaceholder NSString placeholder for passives (e.g. 7-8 for NPS).
+ @param detractorPlaceholder NSString placeholder for detractors (e.g. 0-6 for NPS).
 */
 + (void)setCustomFollowupPlaceholderForPromoter:(NSString *)promoterPlaceholder passive:(NSString *)passivePlaceholder detractor:(NSString *)detractorPlaceholder;
 /**
  @discussion This method allows you to set custom question for each type of end user (detractor, passive or promoter). Passing nil for any of the parameters will result in using defaults set in Wootric's admin panel for that type of end user.
- @param promoterQuestion NSString question for promoters (score 9-10).
- @param passiveQuestion NSString question for passives (score 7-8).
- @param detractorQuestion NSString question for detractors (score 0-6).
+ @param promoterQuestion NSString question for promoters (e.g. 9-10 for NPS).
+ @param passiveQuestion NSString question for passives (e.g. 7-8 for NPS).
+ @param detractorQuestion NSString question for detractors (e.g. 0-6 for NPS).
 */
 + (void)setCustomFollowupQuestionForPromoter:(NSString *)promoterQuestion passive:(NSString *)passiveQuestion detractor:(NSString *)detractorQuestion;
 
